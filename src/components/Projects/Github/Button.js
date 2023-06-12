@@ -12,18 +12,18 @@ import { BsGithub } from 'react-icons/bs';
 import { AiOutlineFork } from 'react-icons/ai';
 import { CgWebsite } from 'react-icons/cg';
 
-
+function  openPage(url) {
+  return () => window.open(url, "_blank")
+}
 
 export default function SpeedDialTooltipOpen({ info }) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const actions = [
-    { icon: <BsGithub />, name: "Repo URL", onClick: openPage(info.url) },
-    { icon:  <AiOutlineFork />, name: 'Copy', onClick: () => { window.open("https://saahild.com", "_blank")} },
-    { icon: <SaveIcon />, name: 'Save' },
-    { icon:  <CgWebsite />, name: 'Print' },
-    { icon: <ShareIcon />, name: 'Share' },
+    { icon: <BsGithub />, name: "Repo URL", onClick: openPage(info.svn_url) },
+    { icon:  <AiOutlineFork />, name: 'fork', onClick: openPage(info.svn_url + "/fork") },
+    // { icon: <ShareIcon />, name: 'Share' },
   ];
   return (
     <Box sx={{ height: 60, transform: 'translateZ(0px)', flexGrow: -1, textAlign: 'center', alignContent: 'center' }}>
