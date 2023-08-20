@@ -12,6 +12,7 @@
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
+    "@tinymce/tinymce-react": "^4.3.0",
     "@uiw/codemirror-theme-github": "^4.11.6",
     "@uiw/react-codemirror": "^4.11.6",
     "analytics": "^0.8.1",
