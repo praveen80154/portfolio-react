@@ -32,7 +32,7 @@ function Footer() {
   let date = new Date();
   let year = date.getFullYear();
   return (
-    <Container fluid className="footer">
+    <Container fluid className="my-footer">
       <Row>
         <Col md="4" className="footer-copywright">
           <h3>Designed and Developed by {config.name} </h3>
@@ -40,7 +40,7 @@ function Footer() {
         <Col md="4" className="footer-copywright">
           <h3>Copyright © {year} SD</h3>
         </Col>
-        <Col md="4" className="footer-body">
+        <Col md="4" className="my-footer-body">
           <ul className="footer-icons">
             <li className="social-icons">
               <a

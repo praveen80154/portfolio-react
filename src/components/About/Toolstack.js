@@ -7,28 +7,32 @@ import {
   SiWindowsterminal,
   SiVercel,
   SiUbuntu,
+  SiKalilinux
 } from "react-icons/si";
 
 function Toolstack() {
   return (
     <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
       <Col xs={4} md={2} className="tech-icons">
-        <SiLinux />
+        <SiLinux className="inline-block"/>
       </Col>
       <Col xs={4} md={2} className="tech-icons">
-        <SiWindowsterminal />
+        <SiWindowsterminal className="inline-block"/>
       </Col>
       <Col xs={4} md={2} className="tech-icons">
-        <SiUbuntu />
+        <SiUbuntu className="inline-block"/>
       </Col>
       <Col xs={4} md={2} className="tech-icons">
-        <SiVisualstudiocode />
+        <SiVisualstudiocode className="inline-block"/>
       </Col>
       <Col xs={4} md={2} className="tech-icons">
-        <SiPostman />
+        <SiPostman className="inline-block"/>
       </Col>
       <Col xs={4} md={2} className="tech-icons">
-        <SiVercel />
+        <SiVercel className="inline-block"/>
+      </Col>
+      <Col xs={4} md={2} className="tech-icons">
+        <SiKalilinux  className="inline-block"/>
       </Col>
     </Row>
   );

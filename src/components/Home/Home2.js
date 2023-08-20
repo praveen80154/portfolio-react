@@ -81,7 +81,7 @@ function Home2() {
                   rel="noreferrer"
                   className="icon-colour  home-social-icons"
                 >
-                  <AiFillGithub />
+                  <AiFillGithub className="inline-block"/>
                 </a>
               </li>
               <li className="social-icons">
@@ -91,7 +91,7 @@ function Home2() {
                   rel="noreferrer"
                   className="icon-colour  home-social-icons"
                 >
-                  <SiReplit />
+                  <SiReplit className="inline-block"/>
                 </a>
               </li>
               <li className="social-icons">
@@ -101,8 +101,8 @@ function Home2() {
                   rel="noreferrer"
                   className="icon-colour  home-social-icons"
                 >
-                  <BsFillEnvelopeFill />
-                </a>
+                  <BsFillEnvelopeFill className="inline-block"/>
+                </a>  
               </li>
               {/* <li className="social-icons">
                 <a

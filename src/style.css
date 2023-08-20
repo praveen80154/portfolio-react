@@ -17,14 +17,18 @@
   );
 
   /* Setting the color of the text to purple. */
-  --imp-text-color: #c770f0;
+  --imp-text-color: #a35bc5;
 }
 /* Setting the color of the text to purple. */
 .purple {
   color: var(--imp-text-color) !important;
+  transition-duration: 700ms;
+  /* transition: all ease-in-out; */
+  transition-property: all;
+  transition-timing-function: ease-in-out;
 }
 .purple:hover {
-  color: #cd7ef1!important;
+  color: #cd7ef1 !important; /*#cd7ef1 */
 }
 /* Removing the box-shadow from the button when it is focused. */
 button:focus {
@@ -423,7 +427,7 @@ button:focus {
 /* --------- */
 /* Footer */
 /* --------- */
-.footer {
+.my-footer {
   background-color: rgb(10, 4, 22);
   bottom: 0 !important;
   padding-top: 10px !important;
@@ -433,7 +437,7 @@ button:focus {
   text-align: center !important;
 }
 
-.footer-body {
+.my-footer-body {
   z-index: 1;
   text-align: center !important;
 }
@@ -443,12 +447,12 @@ button:focus {
     text-align: center !important;
   }
 
-  .footer-body {
+  .my-footer-body {
     text-align: center !important;
   }
 }
 
-.footer h3 {
+.my-footer h3 {
   font-size: 1em;
   color: white !important;
   margin-top: 0.5em !important;

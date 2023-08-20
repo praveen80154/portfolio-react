@@ -15,31 +15,31 @@ function Techstack() {
   return (
     <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
       <Col xs={4} md={2} className="tech-icons">
-        <SiYarn />
+        <SiYarn className="inline-block" />
       </Col>
       <Col xs={4} md={2} className="tech-icons">
-        <SiSqlite />
+        <SiSqlite className="inline-block"/>
       </Col>
       <Col xs={4} md={2} className="tech-icons">
-        <DiMysql />
+        <DiMysql className="inline-block"/>
       </Col>
       <Col xs={4} md={2} className="tech-icons">
-        <DiJavascript1 />
+        <DiJavascript1 className="inline-block"/>
       </Col>
       <Col xs={4} md={2} className="tech-icons">
-        <DiNodejs />
+        <DiNodejs className="inline-block"/>
       </Col>
       <Col xs={4} md={2} className="tech-icons">
-        <DiReact />
+        <DiReact  className="inline-block"/>
       </Col>
       <Col xs={4} md={2} className="tech-icons">
-        <DiMongodb />
+        <DiMongodb className="inline-block" />
       </Col>
       <Col xs={4} md={2} className="tech-icons">
-        <SiNextdotjs />
+        <SiNextdotjs className="inline-block" />
       </Col>
       <Col xs={4} md={2} className="tech-icons">
-        <DiGit />
+        <DiGit className="inline-block"/>
       </Col>
     </Row>
   );

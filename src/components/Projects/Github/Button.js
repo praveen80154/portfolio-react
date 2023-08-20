@@ -18,6 +18,7 @@ export default function SpeedDialTooltipOpen({ info }) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const openPage = url => () => window.open(url, "_blank");
   const actions = [
     { icon: <BsGithub />, name: "Repo URL", onClick: openPage(info.url) },
     { icon:  <AiOutlineFork />, name: 'Copy', onClick: () => { window.open("https://saahild.com", "_blank")} },
