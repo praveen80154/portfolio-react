@@ -25,6 +25,7 @@ import Modal from "react-bootstrap/Modal";
 import { useRef } from "react";
 import Particle from "./components/Particle";
 import useAckee from "use-ackee"
+import Contact from "./components/Contact/Contact";
 const querys = new URLSearchParams(window.location.search);
 function App() {
   const [load, upadateLoad] = useState(true);
@@ -165,6 +166,7 @@ play();
                 <Route path="/" element={<Home />} />
                 <Route path="/project" element={<Projects />} />
                 <Route path="/ghproject" element={<GHProjects />} />
+                <Route path="/contact" element={<Contact />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/resume" element={<Resume />} />
                 <Route path="/particles" element={<Particle />} />

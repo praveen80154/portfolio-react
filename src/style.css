@@ -23,7 +23,9 @@
 .purple {
   color: var(--imp-text-color) !important;
 }
-
+.purple:hover {
+  color: #cd7ef1!important;
+}
 /* Removing the box-shadow from the button when it is focused. */
 button:focus {
   box-shadow: none !important;
