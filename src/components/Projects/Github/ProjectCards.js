@@ -30,7 +30,7 @@ function ProjectCards(props) {
 
     <Card className="project-card-view">
       <Card.Body>
-        <Card.Title className="get-hacked">{props.fork ? <AiOutlineFork /> : null} {props.title}</Card.Title>
+        <Card.Title className="get-hacked">{props.fork ? <AiOutlineFork className="inline-block" /> : null} {props.title}</Card.Title>
         <Card.Text style={{ textAlign: "justify" }} className="get-hacked">
           {props.description}
         </Card.Text>
@@ -42,7 +42,7 @@ function ProjectCards(props) {
         </Button>
         {"\n"}
         {"\n"} */}
-        <DialButton info={props}/>
+        <DialButton info={props} />
         {/* If the component contains Demo link and if it's not a Blog then, it will render the below component  */}
 
     {/* {props.homepage ? <Button  style={{ margin: 5 }}
@@ -69,7 +69,7 @@ function ProjectCards(props) {
        </Col>
         
         
-       <AiFillStar style={{ fontSize: "1.1em" }} /> {props.stargazers_count}
+       <AiFillStar className="inline-block" style={{ fontSize: "1.1em" }} /> {props.stargazers_count}
 
           {/* <Button
             variant="primary"

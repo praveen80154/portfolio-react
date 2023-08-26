@@ -19,7 +19,7 @@ function ProjectCards(props) {
           {props.description}
         </Card.Text>
         <Button variant="primary" href={props.ghLink} target="_blank">
-          <BsGithub /> &nbsp;
+          <BsGithub className="inline-block" /> &nbsp;
           {props.isBlog ? "Blog" : "GitHub"}
         </Button>
         {"\n"}
@@ -30,11 +30,12 @@ function ProjectCards(props) {
         {!props.isBlog && props.demoLink && (
           <Button
             variant="primary"
+            className="btn btn-primary"
             href={props.demoLink}
             target="_blank"
             style={{ marginLeft: "10px" }}
           >
-            <CgWebsite /> &nbsp;
+            <CgWebsite className="inline-block" /> &nbsp;
             {"Demo"}
           </Button>
         )}

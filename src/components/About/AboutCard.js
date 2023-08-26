@@ -11,30 +11,30 @@ function AboutCard() {
             Hi Everyone, I am{" "}
             <span className="purple get-hacked">Saahil dutta, </span>
             from <span className="purple get-hacked"> USA </span>
-            <br />I am a 8th grader in KCD.
+            <br />I am a 9th grader in KCD.
             <br />
             <br />
             Apart from coding, some other activities that I love to do!
           </p>
           <ul>
             <li className="about-activity">
-              <ImPointRight /> Playing Games
+              <ImPointRight className="inline-block"/> Playing Games
             </li>
             <li className="about-activity">
-              <ImPointRight /> Eating different types of food
+              <ImPointRight className="inline-block"/> Eating different types of food
             </li>
+            {/* <li className="about-activity">
+              <ImPointRight className="inline-block"/> Traveling
+            </li> */}
             <li className="about-activity">
-              <ImPointRight /> Traveling
-            </li>
-            <li className="about-activity">
-              <ImPointRight /> Swimming
+              <ImPointRight className="inline-block"/> Swimming
             </li>
           </ul>
 
-          <p style={{ color: "rgb(155 126 172)" }} className="get-hacked">
+          <p  className="get-hacked hover:text-fuchsia-600 ease-linear duration-700 text-fuchsia-500 first-letter:font-2xl">
             "It has become appallingly obvious that our technology has exceeded
             our humanity."{" "}
-          </p>
+          </p>  
           <footer className="blockquote-footer get-hacked">
             Albert Einstein
           </footer>

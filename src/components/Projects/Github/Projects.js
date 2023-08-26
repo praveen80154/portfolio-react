@@ -39,7 +39,7 @@ function GHProjects() {
           })}
         </Row>
       </Container>
-      e
+      
     </Container>
   );
 }
