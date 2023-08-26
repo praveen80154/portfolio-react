@@ -5,16 +5,20 @@ import Particle from "../Particle";
 import { Editor } from "@tinymce/tinymce-react";
 import { useState } from "react";
 // import Send from "./Send";
-export default function Contact() {
+export default function Contact({ ackee }) {
 
   const [message, setMessage] = useState("");
 const onClick = async (e) =>{
   e.preventDefault();
  const data = { 
-  email: e.target.email.value,
-  name: e.target.name.value,
+  email: e.target.email.value.toString(),
+  name: e.target.name.value.toString(),
   body: message
  }
+ ackee.action('e49da181-1b12-4db4-8296-35ec26a8f1a9', {
+  key: `${data.name} (${data.email})`,
+  value: 1
+})
   fetch(process.env.REACT_APP_BACKEND_URL + "/submit_form", {
     method: "POST",
     body: JSON.stringify(data),
@@ -30,6 +34,7 @@ const onClick = async (e) =>{
     //  ...
     if (data.status === 201) {
       alert("Email sent successfully");
+     
     }
   });
 }
@@ -52,7 +57,7 @@ const onClick = async (e) =>{
                 <span className="label-text">Email</span>
               </label>
               <input
-                type="text"
+                type="email"
                 placeholder="email"
                 name="email"
                 className="text-white bg-opacity-50 input input-bordered"

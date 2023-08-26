@@ -12,6 +12,7 @@ import {
   AiOutlineHome,
   AiOutlineFundProjectionScreen,
   AiOutlineUser,
+  AiFillContacts,
 } from "react-icons/ai";
 
 import { CgFileDocument } from "react-icons/cg";
@@ -27,7 +28,7 @@ import { CgFileDocument } from "react-icons/cg";
  * It renders a navbar with a logo, a few links and a button.
  * @returns A Navbar component.
  */
-function NavBar() {
+function NavBar({ ackee }) {
   const [expand, updateExpanded] = useState(false);
   const [navColour, updateNavbar] = useState(false);
 
@@ -40,7 +41,12 @@ function NavBar() {
   }
 
   window.addEventListener("scroll", scrollHandler);
-
+const navigate = (name) => () => {
+  ackee.action('39c606db-3196-4f13-ad0e-0fe940675820', {
+    key: name,
+    value: 1
+  })
+} 
   return (
     <Navbar
       expanded={expand}
@@ -66,13 +72,13 @@ function NavBar() {
         </Navbar.Toggle>
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto" defaultActiveKey="#home">
-            <Nav.Item>
+            <Nav.Item onClick={navigate('Home')} >
               <Nav.Link as={Link} to="/" onClick={() => updateExpanded(false)}>
                 <AiOutlineHome style={{ marginBottom: "2px" }} className="inline-block" /> Home
               </Nav.Link>
             </Nav.Item>
 
-            <Nav.Item>
+            <Nav.Item onClick={navigate('About')}>
               <Nav.Link
                 as={Link}
                 to="/about"
@@ -82,7 +88,7 @@ function NavBar() {
               </Nav.Link>
             </Nav.Item>
 
-            <Nav.Item>
+            <Nav.Item onClick={navigate('Project')}>
               <Nav.Link
                 as={Link}
                 to="/project"
@@ -95,7 +101,7 @@ function NavBar() {
               </Nav.Link>
             </Nav.Item>
 
-            <Nav.Item>
+            <Nav.Item onClick={navigate('Resume')}>
               <Nav.Link
                 as={Link}
                 to="/resume"
@@ -104,8 +110,17 @@ function NavBar() {
                 <CgFileDocument className="inline-block" style={{ marginBottom: "2px" }} /> Resume
               </Nav.Link>
             </Nav.Item>
+            <Nav.Item onClick={navigate('Contact')}>
+              <Nav.Link
+                as={Link}
+                to="/contact"
+                onClick={() => updateExpanded(false)}
+              >
+                <AiFillContacts className="inline-block" style={{ marginBottom: "2px" }} /> Contact
+              </Nav.Link>
+            </Nav.Item>
 
-            <Nav.Item>
+            <Nav.Item onClick={navigate('Blog')}>
               <Nav.Link
                 href="https://blog.saahild.com/"
                 target="_blank"

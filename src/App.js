@@ -34,6 +34,7 @@ function App() {
   const [socket, setSocket] = useState(null);
   const [socketConnected, setSocketConnected] = useState(false);
   const [isModelOpen, setModelOpen] = React.useState(false);
+  const [recorded, setRecorded] = useState(false);
 const effectRef = useRef({})
   const showModal = () => {
     setModelOpen(true);
@@ -70,22 +71,40 @@ const ackee = ackeeTracker.create('https://ackee.saahild.com', {
   ignoreOwnVisits: false
 })
 
-fetch('ipinfo.io').then(r => r.json()).then(({ ip }) => {
-  ackee.record('c082bd15-f9d8-414f-aa10-926e1d66a5d6', {
-    ...ackeeTracker.attributes(true),
-    siteLocation: window.location.href, 
-    ip
-  })
-  ackee.action('a44e901e-1708-47c3-b13d-2dc9ab1d10ca', { 
-    key: ip,
-    value: 1
-  })
-})
+useEffect(() => {
+  if(!recorded) {
+    setRecorded(true)
+   
+   setTimeout(() => {
+  
+    fetch('http://ip-api.com/json/').then(r => r.json()).then((json) => {
+      const ip = json.query
+     //  console.log('gimmie the ip', ip)
+     if(recorded) return;
+
+       ackee.record('c082bd15-f9d8-414f-aa10-926e1d66a5d6', {
+         ...ackeeTracker.attributes(true),
+         siteLocation: window.location.href, 
+        //  ip 
+       })
+       const loadTime = window.performance.timing.domContentLoadedEventEnd- window.performance.timing.navigationStart;
+       ackee.action('a44e901e-1708-47c3-b13d-2dc9ab1d10ca', { 
+         key: ip,
+         value: 1
+       })
+       ackee.action('798e5262-76ab-4077-93f4-f5771247ea2a', { 
+        key: `${(loadTime/1000).toFixed(2)}s`,
+        value: 1
+      })
+     })
+   }, 500)
+  } 
+}, [recorded])
   useEffect(() => {
     const timer = setTimeout(() => {
       upadateLoad("done");
     }, 1200);
-
+   
     return () => clearTimeout(timer);
   }, []);
 useEffect(async () => {

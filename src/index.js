@@ -10,69 +10,7 @@ import Analytics from "analytics";
 
 import { AnalyticsProvider, AnalyticsConsumer } from "use-analytics";
 // require('dotenv').config()
-const querys = new URLSearchParams(window.location.search);
 
-const analytics = Analytics({
-  app: "personal-site",
-  plugins: [
-    {
-      /* All plugins require a name */
-      name: "my-example",
-      /* Everything else below this is optional depending on your plugin requirements */
-      // config: {},
-      initialize: ({ config }) => {
-        // console.log("CALLED INIT")
-        // load provider script to page
-      },
-      page: ({ payload }) => {
-        // console.log("CALLED")
-        // call provider specific page tracking
-      },
-      track: ({ payload }) => {
-        // console.log("CALLED")
-        // call provider specific event tracking
-      },
-      identify: async ({ payload }) => {
-        // call provider specific user identify method
-        // console.log("identify#(payload)", payload)
-        fetch(
-          `${
-            process.env.REACT_APP_PRODUCTION_ANALYTICS_URL &&
-            process.env.NODE_ENV === "production"
-              ? process.env.REACT_APP_PRODUCTION_ANALYTICS_URL
-              : "http://localhost:8080/"
-          }ana`,
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: process.env.REACT_APP_PASSWORD,
-            },
-            method: "POST",
-            body: JSON.stringify({
-              url: window.location.href,
-              data: payload.traits,
-              ref: querys.get("ref") || "No Ref",
-              AnonId: payload.anonymousId,
-              id: payload.userId,
-              ip_info: await fetch(
-                "https://ipinfo.io/json?token=" +
-                  process.env.REACT_APP_IPINFO_TOKEN
-              ).then((res) => res.json()),
-              type: payload.options?.type || payload.type,
-            }),
-            mode: "cors",
-          }
-        );
-      },
-      // loaded: () => {
-      //   // console.log("CALLED LOADED")
-
-      //   // return boolean so analytics knows when it can send data to third party
-      //   return !!window.myPluginLoaded
-      // }
-    },
-  ],
-});
 
 document.title = config.title;
 (() => {
@@ -94,12 +32,9 @@ document.title = config.title;
       "This message will show during production build. & development build"
     );
 })();
-analytics.identify("open-page");
 ReactDOM.render(
   <React.StrictMode>
-    <AnalyticsProvider instance={analytics}>
       <App />
-    </AnalyticsProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
