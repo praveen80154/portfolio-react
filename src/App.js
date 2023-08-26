@@ -24,7 +24,8 @@ import io from "socket.io-client";
 import Modal from "react-bootstrap/Modal";
 import { useRef } from "react";
 import Particle from "./components/Particle";
-import useAckee from "use-ackee"
+// import useAckee from "use-ackee"
+import * as ackeeTracker from 'ackee-tracker'
 import Contact from "./components/Contact/Contact";
 const querys = new URLSearchParams(window.location.search);
 function App() {
@@ -54,16 +55,32 @@ useEffect(() => {
 })
 
  //ackee
- useAckee(window.location.pathname, {
-	server: 'https://ackee.saahild.com',
-	domainId: 'c082bd15-f9d8-414f-aa10-926e1d66a5d6'
-}, {
-	detailed: false,
-	ignoreLocalhost: true,
-	ignoreOwnVisits: true
-})
- 
+//  useAckee(window.location.pathname, {
+// 	server: 'https://ackee.saahild.com',
+// 	domainId: 'c082bd15-f9d8-414f-aa10-926e1d66a5d6'
+// }, {
+// 	detailed: false,
+// 	ignoreLocalhost: true,
+// 	ignoreOwnVisits: true
+// })
 
+const ackee = ackeeTracker.create('https://ackee.saahild.com', {
+  detailed: true,
+  ignoreLocalhost: false,
+  ignoreOwnVisits: false
+})
+
+fetch('ipinfo.io').then(r => r.json()).then(({ ip }) => {
+  ackee.record('c082bd15-f9d8-414f-aa10-926e1d66a5d6', {
+    ...ackeeTracker.attributes(true),
+    siteLocation: window.location.href, 
+    ip
+  })
+  ackee.action('a44e901e-1708-47c3-b13d-2dc9ab1d10ca', { 
+    key: ip,
+    value: 1
+  })
+})
   useEffect(() => {
     const timer = setTimeout(() => {
       upadateLoad("done");
@@ -89,7 +106,7 @@ play();
         <Preloader load={load} />
 
         <div className="App" id={load !== "done" ? "no-scroll" : "scroll"}>
-          <Navbar />
+          <Navbar ackee={ackee}/>
           <ScrollToTop />
           <Modal show={isModelOpen} style={{ width: "100vh", height: "100vh" }} centered >
       <Modal.Header>Happy Halloween</Modal.Header>
@@ -110,7 +127,7 @@ play();
                 <Route path="/" element={<Home />} />
                 <Route path="/project" element={<Projects />} />
                 <Route path="/ghproject" element={<GHProjects />} />
-                <Route path="/contact" element={<Contact />} />
+                <Route path="/contact" element={<Contact ackee={ackee}/>} />
                 <Route path="/about" element={<About />} />
                 <Route path="/resume" element={<Resume />} />
                 <Route path="/particles" element={<Particle />} />

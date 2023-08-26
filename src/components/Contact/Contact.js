@@ -6,8 +6,33 @@ import { Editor } from "@tinymce/tinymce-react";
 import { useState } from "react";
 // import Send from "./Send";
 export default function Contact() {
-  const [message, setMessage] = useState("");
 
+  const [message, setMessage] = useState("");
+const onClick = async (e) =>{
+  e.preventDefault();
+ const data = { 
+  email: e.target.email.value,
+  name: e.target.name.value,
+  body: message
+ }
+  fetch(process.env.REACT_APP_BACKEND_URL + "/submit_form", {
+    method: "POST",
+    body: JSON.stringify(data),
+    //  headers
+    headers: {
+      "Content-Type": "application/json",
+      // "X-CSRF-TOKEN": submitToken
+      Authorization: process.env.REACT_APP_BACKEND_TOKEN,
+    },
+  })
+  .then((r) => r.json())
+  .then((data) => {
+    //  ...
+    if (data.status === 201) {
+      alert("Email sent successfully");
+    }
+  });
+}
   return <div className="min-h-screen pt-20 hero">
     <Particle />
   <div className="text-center hero-content">
@@ -20,7 +45,7 @@ export default function Contact() {
       </h1>
       <p className="py-6 text-white">Contact me</p>
       <div className="flex-shrink-0 w-full max-w-sm p-5 shadow-2xl bg-base-300 bg-opacity-40">
-        <form id="sendemail">
+        <form onSubmit={onClick}>
           <div >
             <div className="">
               <label className="label">
