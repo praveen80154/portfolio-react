@@ -58,8 +58,8 @@ function ResumeNew() {
         <Row className="resume">
           {/* <iframe src="https://resume.github.io/?NeonGamerBot-QK" title="Resume" className="d-flex justify-content-center" scale={width > 786 ? 1.7 : 0.6} width="500" height={786}/>  */}
           <Document file={"https://raw.githubusercontent.com/NeonGamerBot-QK/NeonGamerBot-QK/output-resume/file.pdf"} className="text-center justify-content-center">
-            <Page pageNumber={1} scale={ 0.8} className={"ml-96"} />
-            <Page pageNumber={2} scale={ 0.8} className={"ml-96"}/>
+            <Page pageNumber={1} scale={ .9} className={"md:ml-96"} />
+            <Page pageNumber={2} scale={ .9} className={"md:ml-96"}/>
           </Document>
         </Row>
 
