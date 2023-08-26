@@ -67,7 +67,7 @@ useEffect(() => {
 
 const ackee = ackeeTracker.create('https://ackee.saahild.com', {
   detailed: true,
-  ignoreLocalhost: false,
+  ignoreLocalhost: true,
   ignoreOwnVisits: false
 })
 
@@ -77,8 +77,8 @@ useEffect(() => {
    
    setTimeout(() => {
   
-    fetch('http://ip-api.com/json/').then(r => r.json()).then((json) => {
-      const ip = json.query
+    fetch('https://freeipapi.com/api/json').then(r => r.json()).then((json) => {
+      const ip = json.ipAddress
      //  console.log('gimmie the ip', ip)
      if(recorded) return;
 
