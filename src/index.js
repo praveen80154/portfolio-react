@@ -10,7 +10,7 @@ import Analytics from "analytics";
 
 import { AnalyticsProvider, AnalyticsConsumer } from "use-analytics";
 // require('dotenv').config()
-
+(() => {
 setInterval(() => {
   if (document.hasFocus()) {
     document.title = config.title;
@@ -18,7 +18,6 @@ setInterval(() => {
     document.title = "Come Back :("
   }
 }, 200)
-(() => {
   const isDev = process.env.NODE_ENV !== "production";
   console.log(
     `%c What's up?`,
