@@ -11,8 +11,13 @@ import Analytics from "analytics";
 import { AnalyticsProvider, AnalyticsConsumer } from "use-analytics";
 // require('dotenv').config()
 
-
-document.title = config.title;
+setInterval(() => {
+  if (document.hasFocus()) {
+    document.title = config.title;
+  } else {
+    document.title = "Come Back :("
+  }
+}, 200)
 (() => {
   const isDev = process.env.NODE_ENV !== "production";
   console.log(
