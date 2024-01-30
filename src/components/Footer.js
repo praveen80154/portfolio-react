@@ -35,7 +35,7 @@ function Footer() {
     <Container fluid className="my-footer">
       <Row>
         <Col md="4" className="footer-copywright">
-          <h3>Designed and Developed by {config.name} </h3>
+          <h3>Designed and Developed by <span style={{ color: "#123524"}}>{config.name}</span> </h3>
         </Col>
         <Col md="4" className="footer-copywright">
           <h3>Copyright © {year} SD</h3>

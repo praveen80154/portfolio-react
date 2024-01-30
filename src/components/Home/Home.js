@@ -30,7 +30,7 @@ function Home() {
 
               <h1 className="heading-name get-hacked">
                 I'M
-                <strong className="main-name get-hacked"> {config.name}</strong>
+                <strong className="main-name get-hacked"> <span style={{ color: "#123524" }}>{config.name}</span></strong>
               </h1>
 
               <div style={{ padding: 50, textAlign: "left" }}>
