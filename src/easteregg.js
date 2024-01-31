@@ -140,3 +140,39 @@ d00000Pd0000Pd0000Pd00000b?00000b?0000b?0000b
     window.alert("Incorect Code");
   }
 };
+
+// kitty easter eggs
+// if(window.activated || )
+// setTimeout(() => {})
+window.addEventListener('load', () => {
+  let isss = [3,-3]
+let goDown = true
+setInterval(() => {
+  if(window.activated || window.kittyActivated){
+if(goDown) {
+isss = [isss[0] -1, isss[1] + 1]
+if (isss[0] <= -50) {
+goDown = false;
+}
+} else {
+isss = [isss[0] +1, isss[1] -1]
+if (isss[0] > 50) {
+goDown = true;
+}
+}
+document.getElementById('oneko').style.filter = `drop-shadow(${isss[0]}px ${isss[0]}px #cd7ef1)  drop-shadow(${isss[1]}px ${isss[1]}px #a35bc5)`
+  } else {
+    // document.getElementById('oneko').style.filter
+  }
+})
+document.getElementById('oneko').addEventListener('click', () => {
+  // document.getElementById('oneko').style.filter
+  window.kittyActivated = true;
+})
+document.getElementById('oneko').addEventListener('mouseenter', () => {
+  document.getElementById('oneko').style.filter = 'drop-shadow(2px 2px #cd7ef1)  drop-shadow(-2px -2px #a35bc5)'
+})
+document.getElementById('oneko').addEventListener('mouseleave', () => {
+  document.getElementById('oneko').style.filter = ''
+})
+})
