@@ -16,6 +16,7 @@ setInterval(() => {
     document.title = config.title;
   } else {
     document.title = "Come Back :("
+  document.getElementById("oneko").style.filter = "invert(100%)"
   }
 }, 200)
   // oneko import
