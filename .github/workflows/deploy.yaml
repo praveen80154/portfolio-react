@@ -1,37 +1,24 @@
-name: my react app - app
-on:
-  push:
-    branches:
-      - main # Change this to your main branch name
+name: remote ssh command
+on: [push]
 
 jobs:
-  build-and-deploy:
+  build:
+    name: Build
     runs-on: ubuntu-latest
-
+    environment:
+       name: production
+       url: https://saahild.com 
     steps:
-      - name: Checkout repository code
-        uses: actions/checkout@v2
-      
-      - name: Install dependencies
-        run: npm install
-      
-      - name: Build
-        run: npm run build
-
-      - name: Upload to S3
-        uses: jakejarvis/s3-sync-action@master
-        env:
-          SOURCE_DIR: build/
-          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      
-      - name: SSH to server
-        uses: appleboy/ssh-action@v0.1.8
-        with:
-          host: your_host
-          username: your_username
-          key: ${{ secrets.SSH_PRIVATE_KEY }} # Replace with your SSH private key secret
-          port: your_ssh_port # Replace with your SSH port
-          script: |
-            # Your SSH script commands here
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@v0.1.8
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: |
+            cd /root
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+            [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+            bash ./deploy.sh
