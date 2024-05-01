@@ -6,17 +6,17 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     environment:
-       name: production
-       url: https://saahild.com 
+      name: production
+      url: https://saahild.com 
     steps:
-    - name: executing remote ssh commands using password
-      uses: appleboy/ssh-action@v0.1.8
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        port: ${{ secrets.PORT }}
-        script: |
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: |
             cd /root
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
