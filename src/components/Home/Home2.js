@@ -18,24 +18,24 @@ function Home2() {
               MYSELF
             </h1>
             <p className="home-about-body">
-              I started programming during the Covid Pandemic in 2020.
+              I started programming studies in 2021.
               <br />
               <br />I am fluent in new like programming languages such as
               <i>
                 <b className="purple">
                   {" "}
-                  CSS, HTML, Javascript and Typescript.{" "}
+                  Java,Python.{" "}
                 </b>
               </i>
               <br />
-              <br /> My field of Interest's are building new &nbsp;
+              <br /> My field of Interest's are in cloud technologies such as &nbsp;
               <i>
                 <b className="purple get-hacked">
-                  Web Technologies and Products{" "}
+                  Amazon web service{" "}
                 </b>{" "}
                 and also in areas related to{" "}
                 <b className="purple get-hacked">
-                  Backend Services, CLI Services
+                  Google cloud platform
                 </b>
               </i>
               <br />
@@ -76,7 +76,7 @@ function Home2() {
             <ul className="home-about-social-links">
               <li className="social-icons">
                 <a
-                  href={"https://github.com/" + config.github_username}
+                  href={"/" + config.github_username}
                   target="_blank"
                   rel="noreferrer"
                   className="icon-colour  home-social-icons"
